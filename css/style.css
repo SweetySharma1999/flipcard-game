@@ -1,0 +1,79 @@
+:root {
+    --card-width: 100px;
+    --card-height: 140px;
+    --primary-color: #6366f1;
+    --bg-color: #0f172a;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.game-container { text-align: center; }
+
+.stats { margin-bottom: 20px; font-size: 1.2rem; }
+
+/* The Grid */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    perspective: 1000px; /* Essential for 3D */
+}
+
+/* Card Container */
+.card {
+    width: var(--card-width);
+    height: var(--card-height);
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Front & Back styling */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.card-front {
+    background-color: var(--primary-color);
+    border: 2px solid white;
+}
+
+.card-back {
+    background-color: #1e293b;
+    transform: rotateY(180deg);
+    border: 2px solid var(--primary-color);
+}
+
+button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
